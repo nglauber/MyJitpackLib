@@ -29,6 +29,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 publishing {
@@ -36,7 +43,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "br.com.nglauber"
             artifactId = "myjitpacklib"
-            version = "dev-1.0"
+            version = "dev-1.0.1"
 
             afterEvaluate {
                 from(components["release"])
